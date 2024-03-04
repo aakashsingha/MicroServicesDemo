@@ -2,6 +2,7 @@ package MicroServices.DemoProject.MicroServices;
 
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -25,8 +26,7 @@ public class Controller {
     }
     
     @PostMapping("/api/vendors")
-    public ResponseEntity<String> postvendors( @Validated VendorRequest vendorRequest)
-    {
+    public ResponseEntity<String> postvendors( @Validated VendorRequest vendorRequest) throws JsonProcessingException {
        vendorservice.postVendor(vendorRequest);
        return ResponseEntity.ok().body("Vendor created successfully");
     }
